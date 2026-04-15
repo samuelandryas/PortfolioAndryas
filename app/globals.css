@@ -409,12 +409,33 @@ main {
   box-shadow: 0 16px 36px rgba(10, 35, 66, 0.12);
 }
 
+.document-frame-mobile {
+  min-height: auto;
+}
+
 .document-frame {
   width: 100%;
   height: 1380px;
   border: 0;
   background: white;
   pointer-events: none;
+}
+
+.document-mobile-card {
+  display: grid;
+  gap: 0.55rem;
+  padding: 1.4rem;
+  text-align: left;
+}
+
+.document-mobile-card strong {
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+
+.document-mobile-card span {
+  color: var(--ink-soft);
+  line-height: 1.45;
 }
 
 .document-frame-hint {
@@ -944,7 +965,7 @@ main {
     height: 84vh;
   }
 
-  .document-frame-wrap,
+  .document-frame-wrap:not(.document-frame-mobile),
   .document-frame {
     min-height: 760px;
     height: 760px;

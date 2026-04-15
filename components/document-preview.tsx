@@ -12,6 +12,19 @@ type DocumentPreviewProps = {
 export function DocumentPreview({ title, src, description }: DocumentPreviewProps) {
   const assetSrc = withBasePath(src);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 720px)");
+    const updateMobileState = () => setIsMobile(mediaQuery.matches);
+
+    updateMobileState();
+    mediaQuery.addEventListener("change", updateMobileState);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateMobileState);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -34,6 +47,15 @@ export function DocumentPreview({ title, src, description }: DocumentPreviewProp
     };
   }, [isOpen]);
 
+  const openPreview = () => {
+    if (isMobile) {
+      window.open(assetSrc, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    setIsOpen(true);
+  };
+
   return (
     <>
       <section className="document-preview">
@@ -49,12 +71,21 @@ export function DocumentPreview({ title, src, description }: DocumentPreviewProp
 
         <button
           type="button"
-          className="document-frame-wrap document-frame-button"
+          className={`document-frame-wrap document-frame-button${isMobile ? " document-frame-mobile" : ""}`}
           aria-label={`Open ${title}`}
-          onClick={() => setIsOpen(true)}
+          onClick={openPreview}
         >
-          <iframe src={assetSrc} title={title} className="document-frame" />
-          <span className="document-frame-hint">Click to expand</span>
+          {isMobile ? (
+            <div className="document-mobile-card">
+              <strong>Open Resume</strong>
+              <span>Tap to open the PDF directly on your phone without the moving preview box.</span>
+            </div>
+          ) : (
+            <>
+              <iframe src={assetSrc} title={title} className="document-frame" />
+              <span className="document-frame-hint">Click to expand</span>
+            </>
+          )}
         </button>
       </section>
 
