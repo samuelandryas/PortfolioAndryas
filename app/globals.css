@@ -424,8 +424,23 @@ main {
 .document-mobile-card {
   display: grid;
   gap: 0.55rem;
-  padding: 1.4rem;
+  padding: 1rem;
   text-align: left;
+}
+
+.document-mobile-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 10 / 14;
+  overflow: hidden;
+  border-radius: calc(var(--radius-xl) - 12px);
+  border: 1px solid rgba(16, 35, 61, 0.08);
+  background: white;
+}
+
+.document-mobile-image {
+  object-fit: cover;
+  object-position: top center;
 }
 
 .document-mobile-card strong {

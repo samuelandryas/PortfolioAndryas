@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { withBasePath } from "@/lib/with-base-path";
 
 type DocumentPreviewProps = {
@@ -77,8 +78,17 @@ export function DocumentPreview({ title, src, description }: DocumentPreviewProp
         >
           {isMobile ? (
             <div className="document-mobile-card">
+              <div className="document-mobile-preview">
+                <Image
+                  src={withBasePath("/resume-preview.png")}
+                  alt={`${title} preview`}
+                  fill
+                  sizes="100vw"
+                  className="document-mobile-image"
+                />
+              </div>
               <strong>Open Resume</strong>
-              <span>Tap to open the PDF directly on your phone without the moving preview box.</span>
+              <span>Tap to open the full PDF without the moving preview box.</span>
             </div>
           ) : (
             <>
