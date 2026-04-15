@@ -386,6 +386,7 @@ main {
 }
 
 .document-frame-wrap {
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius-xl);
   border: 1px solid var(--line);
@@ -394,9 +395,68 @@ main {
   min-height: 1380px;
 }
 
+.document-frame-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  appearance: none;
+  cursor: zoom-in;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.document-frame-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(10, 35, 66, 0.12);
+}
+
 .document-frame {
   width: 100%;
   height: 1380px;
+  border: 0;
+  background: white;
+  pointer-events: none;
+}
+
+.document-frame-hint {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  background: rgba(10, 35, 66, 0.76);
+  color: #fff8ef;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
+.document-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(10, 24, 43, 0.84);
+  backdrop-filter: blur(10px);
+}
+
+.document-lightbox-shell {
+  width: min(1240px, 100%);
+}
+
+.document-lightbox-frame {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 250, 244, 0.16);
+  background: rgba(255, 253, 248, 0.98);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.document-lightbox-iframe {
+  width: 100%;
+  height: min(88vh, 1200px);
   border: 0;
   background: white;
 }
@@ -450,6 +510,7 @@ main {
 }
 
 .portfolio-image-button:focus-visible,
+.document-frame-button:focus-visible,
 .portfolio-lightbox-close:focus-visible {
   outline: 3px solid rgba(196, 106, 42, 0.7);
   outline-offset: 3px;
@@ -873,6 +934,14 @@ main {
 
   .portfolio-lightbox-frame {
     aspect-ratio: 4 / 5;
+  }
+
+  .document-lightbox {
+    padding: 1rem;
+  }
+
+  .document-lightbox-iframe {
+    height: 84vh;
   }
 
   .document-frame-wrap,
