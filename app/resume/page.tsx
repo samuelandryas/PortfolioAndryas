@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";
 import { DocumentPreview } from "@/components/document-preview";
 import { SectionHeading } from "@/components/section-heading";
@@ -22,9 +23,9 @@ export default function ResumePage() {
             <a href="#resume-preview" className="button button-primary">
               View Full Resume
             </a>
-            <a href="/projects" className="button button-secondary">
+            <Link href="/projects" className="button button-secondary">
               View Projects
-            </a>
+            </Link>
           </div>
         </div>
       </section>

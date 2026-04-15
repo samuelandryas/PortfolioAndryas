@@ -13,4 +13,3 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
     </div>
   );
 }
-

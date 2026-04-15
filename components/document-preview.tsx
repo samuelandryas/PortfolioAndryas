@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/with-base-path";
+
 type DocumentPreviewProps = {
   title: string;
   src: string;
@@ -5,12 +7,14 @@ type DocumentPreviewProps = {
 };
 
 export function DocumentPreview({ title, src, description }: DocumentPreviewProps) {
+  const assetSrc = withBasePath(src);
+
   return (
     <section className="document-preview">
       <div className="document-preview-copy">
         <div className="document-preview-heading">
           <h2>{title}</h2>
-          <a href={src} className="text-link document-download-link">
+          <a href={assetSrc} className="text-link document-download-link">
             Download
           </a>
         </div>
@@ -18,7 +22,7 @@ export function DocumentPreview({ title, src, description }: DocumentPreviewProp
       </div>
 
       <div className="document-frame-wrap">
-        <iframe src={src} title={title} className="document-frame" />
+        <iframe src={assetSrc} title={title} className="document-frame" />
       </div>
     </section>
   );

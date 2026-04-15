@@ -4,6 +4,7 @@ import { CtaSection } from "@/components/cta-section";
 import { PortfolioGallery } from "@/components/portfolio-gallery";
 import { SectionHeading } from "@/components/section-heading";
 import { portfolioDeck } from "@/data/site";
+import { withBasePath } from "@/lib/with-base-path";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -23,7 +24,7 @@ export default function PortfolioPage() {
             short explanations, and an optional download for the original PowerPoint version.
           </p>
           <div className="hero-actions">
-            <a href={portfolioDeck.href} className="button button-primary">
+            <a href={withBasePath(portfolioDeck.href)} className="button button-primary">
               Download Deck
             </a>
             <Link href="/projects" className="button button-secondary">
