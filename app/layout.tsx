@@ -3,8 +3,8 @@ import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/data/site";
+import { withBasePathNoVersion } from "@/lib/with-base-path";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     siteName: `${site.name} Portfolio`,
     type: "website",
     url: siteUrl,
-    images: [`${basePath}/og-image.svg`]
+    images: [withBasePathNoVersion("/og-image.svg")]
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | ${site.title}`,
     description: site.shortBio,
-    images: [`${basePath}/og-image.svg`]
+    images: [withBasePathNoVersion("/og-image.svg")]
   }
 };
 
