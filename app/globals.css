@@ -413,19 +413,16 @@ main {
   min-height: auto;
 }
 
-.document-frame {
-  width: 100%;
-  height: 1380px;
-  border: 0;
-  background: white;
-  pointer-events: none;
-}
-
 .document-mobile-card {
   display: grid;
   gap: 0.55rem;
   padding: 1rem;
   text-align: left;
+}
+
+.document-desktop-card {
+  gap: 0.85rem;
+  padding: 1.25rem;
 }
 
 .document-mobile-preview {
@@ -483,18 +480,25 @@ main {
 }
 
 .document-lightbox-frame {
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius-xl);
   border: 1px solid rgba(255, 250, 244, 0.16);
   background: rgba(255, 253, 248, 0.98);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  aspect-ratio: 10 / 14;
 }
 
-.document-lightbox-iframe {
-  width: 100%;
-  height: min(88vh, 1200px);
-  border: 0;
-  background: white;
+.document-lightbox-image {
+  object-fit: contain;
+  object-position: top center;
+  padding: 1rem;
+}
+
+.document-lightbox-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .portfolio-card {
@@ -919,10 +923,8 @@ main {
     min-height: 180px;
   }
 
-  .document-frame-wrap,
-  .document-frame {
-    min-height: 980px;
-    height: 980px;
+  .document-frame-wrap {
+    min-height: auto;
   }
 }
 
@@ -976,14 +978,12 @@ main {
     padding: 1rem;
   }
 
-  .document-lightbox-iframe {
-    height: 84vh;
+  .document-lightbox-frame {
+    aspect-ratio: 4 / 5;
   }
 
-  .document-frame-wrap:not(.document-frame-mobile),
-  .document-frame {
-    min-height: 760px;
-    height: 760px;
+  .document-frame-wrap:not(.document-frame-mobile) {
+    min-height: auto;
   }
 
   .button,
