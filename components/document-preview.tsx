@@ -76,24 +76,26 @@ export function DocumentPreview({ title, src, description }: DocumentPreviewProp
           aria-label={`Open ${title}`}
           onClick={openPreview}
         >
-          <div className={`document-mobile-card${isMobile ? "" : " document-desktop-card"}`}>
-            <div className="document-mobile-preview">
-              <Image
-                src={withBasePath("/resume-preview.png")}
-                alt={`${title} preview`}
-                fill
-                sizes="100vw"
-                className="document-mobile-image"
-              />
+          {isMobile ? (
+            <div className="document-mobile-card">
+              <div className="document-mobile-preview">
+                <Image
+                  src={withBasePath("/resume-preview.png")}
+                  alt={`${title} preview`}
+                  fill
+                  sizes="100vw"
+                  className="document-mobile-image"
+                />
+              </div>
+              <strong>Open Resume</strong>
+              <span>Tap to open the full PDF without the moving preview box.</span>
             </div>
-            <strong>{isMobile ? "Open Resume" : "Resume Preview"}</strong>
-            <span>
-              {isMobile
-                ? "Tap to open the full PDF without the moving preview box."
-                : "Click to expand the resume or use Download to open the full PDF."}
-            </span>
-          </div>
-          <span className="document-frame-hint">{isMobile ? "Tap to open" : "Click to expand"}</span>
+          ) : (
+            <>
+              <iframe src={assetSrc} title={title} className="document-frame" />
+              <span className="document-frame-hint">Click to expand</span>
+            </>
+          )}
         </button>
       </section>
 
@@ -115,19 +117,7 @@ export function DocumentPreview({ title, src, description }: DocumentPreviewProp
               Close
             </button>
             <div className="document-lightbox-frame">
-              <Image
-                src={withBasePath("/resume-preview.png")}
-                alt={`${title} expanded preview`}
-                fill
-                sizes="100vw"
-                className="document-lightbox-image"
-                priority
-              />
-            </div>
-            <div className="document-lightbox-actions">
-              <a href={assetSrc} className="button button-primary" target="_blank" rel="noopener noreferrer">
-                Open Full PDF
-              </a>
+              <iframe src={assetSrc} title={`${title} expanded`} className="document-lightbox-iframe" />
             </div>
           </div>
         </div>
