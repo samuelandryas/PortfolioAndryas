@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";
 import { DocumentPreview } from "@/components/document-preview";
 import { SectionHeading } from "@/components/section-heading";
@@ -14,22 +13,6 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="shell narrow-shell">
-          <p className="eyebrow">Resume</p>
-          <h1>Mechanical engineering experience presented directly on the page.</h1>
-          <p>{resume.summary}</p>
-          <div className="hero-actions">
-            <a href="#resume-preview" className="button button-primary">
-              View Full Resume
-            </a>
-            <Link href="/projects" className="button button-secondary">
-              View Projects
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section className="section-block">
         <div className="shell resume-grid">
           <div className="resume-column">
